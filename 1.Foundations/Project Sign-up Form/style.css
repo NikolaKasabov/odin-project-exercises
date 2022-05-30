@@ -1,0 +1,134 @@
+@font-face {
+  font-family: Norse;
+  font-weight: bold;
+  src: url('./font/Norse-Bold.otf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.container {
+  max-width: 1315px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+/* left section start */
+.left {
+  flex: 37%;
+  background: url('./img/img.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+}
+
+.left .logo-container {
+  height: 140px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 22vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left img {
+  height: 84%;
+}
+
+.left h1 {
+  font-family: Norse;
+  font-size: 85px;
+}
+
+.left .author {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #eee;
+}
+
+.left .author a {
+  color: #eee;
+}
+/* left section end */
+
+
+/* right section start */
+.right {
+  flex: 63%;
+  background-color: #F9FAFB;
+  overflow: hidden;
+}
+
+.right .top {
+  padding: 17vh 80px 55px 40px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.right .top p:first-child {
+  margin-bottom: 30px;
+}
+
+.right .white-block {
+  height: 20vh;
+  padding: 20px 0 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.right .white-block h4 {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.right .form-controls-container {
+
+}
+
+.right .form-controls-container label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.right .form-control {
+  width: 240px;
+}
+
+.right .form-control input {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #E5E7EB;
+}
+
+.right .form-control input:focus {
+  outline: none;
+  border-color: #1D4ED8;
+}
+
+.right .form-control.error input {
+  border-color: #B91C1C;
+}
+
+/* right section end */
