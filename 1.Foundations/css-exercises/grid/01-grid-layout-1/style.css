@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
@@ -8,6 +9,17 @@ body, html {
   height: 100%;
   padding: 16px;
   box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 5fr 1fr;
+  gap: 15px;
+
+  grid-template-areas: 
+    "header header"
+    "sidebar nav"
+    "sidebar article"
+    "footer footer";
 }
 
 .container div {
@@ -20,19 +32,47 @@ body, html {
 }
 
 .header {
-  background-color: #FFDE22;
+  background-color: #ffde22;
+
+  /* 1 */
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+  /* 2 */
+  /* grid-area: header; */
 }
 
 .sidebar {
-  background-color: #FF7755;
+  background-color: #ff7755;
+
+  /* 1 */
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+
+  /* 2 */
+  /* grid-area: sidebar; */
 }
 
 .nav {
-  background-color: #00DDFF;
+  background-color: #00ddff;
+
+  /* 1 */
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+
+  /* 2 */
+  /* grid-area: nav; */
 }
 
 .article {
   background-color: #bccbde;
+
+  /* 1 */
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+
+  /* 2 */
+  /* grid-area: article; */
 }
 
 .article p {
@@ -44,4 +84,11 @@ body, html {
 
 .footer {
   background-color: #393f4d;
+
+  /* 1 */
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+
+  /* 2 */
+  /* grid-area: footer; */
 }
