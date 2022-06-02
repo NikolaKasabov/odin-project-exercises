@@ -1,4 +1,99 @@
+const selectButtons = document.querySelectorAll('.buttons-container .btn');
+const playerScoreEl = document.querySelector('.player-score');
+const computerScoreEl = document.querySelector('.computer-score');
+const logsEl = document.querySelector('.log-messages');
+const winnerContainer = document.querySelector('.winner-container');
+const winnerEl = document.querySelector('.winner');
+const newGameBtn = document.querySelector('.winner-container .btn');
+
 const choises = ['Rock', 'Paper', 'Scissors'];
+let playerScore = 0;
+let computerScore = 0;
+let gameIsFinished = false;
+
+
+selectButtons.forEach(btn => {
+  btn.addEventListener('click', play);
+});
+
+newGameBtn.addEventListener('click', startNewGame);
+
+
+function play(ev) {
+  if (gameIsFinished) {
+    return;
+  }
+
+  const playerSelection = ev.target.dataset.choise;
+  const computerSelection = computerPlay().toLowerCase();
+
+  const currentRoundResult = playRound(playerSelection, computerSelection);
+  updateScores(currentRoundResult);
+  updateUi(currentRoundResult);
+
+  const winner = checkForWinner();
+  if (winner) {
+    showWinner(winner);
+    gameIsFinished = true;
+  }
+}
+
+function showWinner(winnerName) {
+  winnerEl.innerText = winnerName;
+  winnerContainer.classList.remove('hide');
+}
+
+function hideWinner() {
+  winnerEl.innerText = '';
+  winnerContainer.classList.add('hide');
+}
+
+function checkForWinner() {
+  if (playerScore >= 5) {
+    return 'Player';
+  } else if (computerScore >= 5) {
+    return 'Computer';
+  } else {
+    return null;
+  }
+}
+
+function startNewGame() {
+  gameIsFinished = false;
+  resetScores();
+  clearLogs();
+  hideWinner();
+  updateUi();
+}
+
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+}
+
+function clearLogs() {
+  logsEl.innerHTML = '';
+}
+
+function updateUi(currentLogMessage) {
+  playerScoreEl.innerText = playerScore;
+  computerScoreEl.innerText = computerScore;
+
+  if (currentLogMessage) {
+    // create new message and add it to the logs element
+    const newLog = document.createElement('p');
+    newLog.innerText = currentLogMessage;
+    logsEl.append(newLog);
+  }
+}
+
+function updateScores(currentRoundResult) {
+  if (currentRoundResult.includes('Win')) {
+    playerScore++;
+  } else if (currentRoundResult.includes('Lose')) {
+    computerScore++;
+  }
+}
 
 function computerPlay() {
   const index = Math.floor(Math.random() * 3);
@@ -34,48 +129,3 @@ function playRound(playerSelection, computerSelection) {
     return 'ERROR';
   }
 }
-
-function play() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let playerChoise;
-
-  for (let i = 0; i < 5; i++) {
-    playerChoise = prompt('Enter your choise: rock, paper or scissors.');
-    
-    if (!playerChoise
-      || (playerChoise.toLowerCase() !== 'rock'
-      && playerChoise.toLowerCase() !== 'paper'
-      && playerChoise.toLowerCase() !== 'scissors')) {
-      alert('Incorrect choise!');
-      return;
-    } else {
-      const computerChoise = computerPlay().toLowerCase();
-      const roundResult = playRound(playerChoise.toLowerCase(), computerChoise);
-      
-      if(roundResult.includes('Win')) {
-        playerScore++;
-      } else if (roundResult.includes('Lose')) {
-        computerScore++;
-      }
-
-      console.log('===================================');
-      console.log(`Round ${i + 1}:`);
-      console.log(`Your choise: ${playerChoise.toLowerCase()}. Computer's choise: ${computerChoise}.`);
-      console.log(roundResult);
-      console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-      console.log('===================================');
-    } 
-  }
-
-  if(playerScore === computerScore) {
-    console.log('Draw');
-  } else if(playerScore > computerScore) {
-    console.log('You win!');
-  } else if(playerScore < computerScore) {
-    console.log('You lose!');
-  }
-
-}
-
-play();
