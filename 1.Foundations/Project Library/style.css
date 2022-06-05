@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-modal-btn {
+  margin: 50px 0;
+  background-color: rgb(73, 188, 255);
+  color: #fff;
+}
+
+.show-modal-btn:hover {
+  background-color: rgb(94, 195, 253);
+}
+
+.books-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book {
+  min-width: 200px;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.book .change-read-status-btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  background-color: rgb(185, 255, 56);
+  color: #333;
+}
+
+.book .delete-book-btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  background-color:rgb(253, 175, 175);
+  color: #333;
+}
+
+.active {
+  display: block !important;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.modal{
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+}
+
+.modal .form-control {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.modal label {
+  width: 85px;
+}
+
+.modal input,
+.modal select {
+  width: 180px;
+  padding: 5px;
+  border: none;
+  background-color: rgb(204, 247, 255);
+  border-radius: 5px;
+}
+
+.modal .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.modal .buttons button {
+  flex: 1;
+  background-color: transparent;
+  color: rgb(30, 171, 253);
+  border: 1px solid rgb(30, 171, 253);
+  font-size: 14px;
+}

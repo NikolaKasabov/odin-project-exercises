@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <button class="show-modal-btn">Add a book</button>
+    <div class="books-container">
+      <!-- <div class="book" data-id="0">
+        <p>Title: <span class="title">title1</span></p>
+        <p>Author: <span class="author">author1</span></p>
+        <p>Pages: <span class="pages">100</span></p>
+        <button class="change-read-status-btn">read / not read</button>
+        <button class="delete-book-btn">Delete book</button>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="modal">
+    <form>
+      <div class="form-control">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required>
+      </div>
+      <div class="form-control">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" required>
+      </div>
+      <div class="form-control">
+        <label for="pages">Pages</label>
+        <input type="number" name="pages" id="pages" required>
+      </div>
+      <div class="form-control">
+        <label for="isRead">Is read?</label>
+        <select name="isRead" id="isRead">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button class="submit-btn" type="submit">Ok</button>
+        <button class="cancel-btn" type="button">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
