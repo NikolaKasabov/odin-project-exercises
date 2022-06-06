@@ -10,32 +10,12 @@ const isReadEl = document.getElementById('isRead');
 const submitBtn = document.querySelector('.submit-btn');
 const cancelBtn = document.querySelector('.cancel-btn');
 
-let myLibrary = [
-  {
-    title: 'title1',
-    author: 'author1',
-    pages: 45,
-    isRead: true
-  },
-  {
-    title: 'title2',
-    author: 'author2',
-    pages: 56,
-    isRead: false
-  },
-  {
-    title: 'title3',
-    author: 'author3',
-    pages: 145,
-    isRead: true
-  },
-  {
-    title: 'title4',
-    author: 'author4',
-    pages: 450,
-    isRead: false
-  },
-];
+let myLibrary = [];
+
+addBookToLibrary('title1', 'author1', 45, true);
+addBookToLibrary('title2', 'author2', 56, false);
+addBookToLibrary('title3', 'author3', 145, true);
+addBookToLibrary('title4', 'author4', 450, false);
 
 updateBooksUi();
 
@@ -73,6 +53,10 @@ function Book(title, author, pages, isRead) {
   }
 }
 
+Book.prototype.changeReadStatus = function () {
+  this.isRead = !this.isRead;
+}
+
 function updateBooksUi() {
   booksContainer.innerHTML = '';
   myLibrary.forEach((el, index) => {
@@ -90,10 +74,9 @@ function updateBooksUi() {
     // Change book read status button click listener
     book.querySelector('.change-read-status-btn').addEventListener('click', ev => {
       const bookIndex = parseInt(ev.target.parentElement.dataset.id);
-      myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
+      // myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;   // old way
+      myLibrary[bookIndex].changeReadStatus();   // new way
       updateBooksUi();
-
-      // TODO: change the click listener according to the task requirements
     });
 
     // Delete book button click listener
