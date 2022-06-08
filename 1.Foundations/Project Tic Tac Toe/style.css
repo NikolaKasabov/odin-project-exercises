@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hidden {
+  /* display: none !important; */
+  opacity: 0;
+}
+
+.not-clickable {
+  pointer-events: none !important;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+}
+
+.game-board .field {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.game-board .field.empty {
+  cursor: pointer;
+}
+
+/* hide double borders between the fields */
+/* fields: 4, 5, 6, 7, 8, 9. (nth-child index starts from 1, but 'n' starts from 0) */
+.game-board .field:nth-child(n + 4) {
+  margin-top: -1px;
+}
+
+/* fields: 1, 4, 7. */
+.game-board .field:not(:nth-child(3n + 1)) {
+  margin-left: -1px;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.result-container .new-game-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(206, 253, 255);
+  color: #444;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.result-container .new-game-btn:active {
+  transform: scale(0.98);
+}
